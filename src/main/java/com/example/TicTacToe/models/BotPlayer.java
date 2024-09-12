@@ -5,12 +5,10 @@ import com.example.TicTacToe.stratergy.BotPlayingStratergy;
 
 public class BotPlayer extends Player{
 	
-	private BotPlayerDifficulty botPlayerDifficulty;
 	private BotPlayingStratergy botPlayingStratergy;
 
 	public BotPlayer(String name, String id, Character symbol, BotPlayerDifficulty botPlayerDifficulty) {
 		super(name, id, symbol, PlayerType.BOT);
-		this.botPlayerDifficulty = botPlayerDifficulty;
 		this.botPlayingStratergy = BotPlayingStratergyFactory.botPlyingStratergy(botPlayerDifficulty);
 	}
 
@@ -18,7 +16,8 @@ public class BotPlayer extends Player{
 
 	@Override
 	public Move makeMove(Board board) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Calculating Bot's move");
+		Cell cell = botPlayingStratergy.makeMove(board);
+		return new Move(cell,this);
 	}
 }

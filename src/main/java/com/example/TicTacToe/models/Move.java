@@ -17,7 +17,6 @@ public class Move {
 		this.player = player;
 	}
 	public Move(Cell cell, Player player) {
-		super();
 		this.cell = cell;
 		this.player = player;
 	}

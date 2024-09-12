@@ -82,7 +82,7 @@ public class Game {
 	}
 
 	public void display() {
-		board.display();
+			board.display();
 	}
 
 //	public Move makeMove() {
@@ -109,7 +109,7 @@ public class Game {
         do {
             //Ask the player to make the move
             move = currentPlayer.makeMove(board);
-        }while(!true);
+        }while(!validateMove(move));
         //Update the board/cell
         Cell cellToUpdate = board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol());
         move.setCell(cellToUpdate);
@@ -125,17 +125,25 @@ public class Game {
             setGameState(GameState.GAME_WON);
             this.winner = currentPlayer;
         }
-//        else if(moves.size() == board.getDimension() * board.getDimension()){
-//            setGameState(GameState.DRAW);
-//            this.winner = null;
-//        }
-
-        //Update the next player
+        else if (moves.size()==board.getDimensions()*board.getDimensions()) {
+        	setGameState(GameState.DRAW);
+        	this.winner=null;
+        }
         nextPlayerIndex = (nextPlayerIndex + 1) % players.size();
 
     }
-	private void validateMove(Move move) {
+	private boolean validateMove(Move move) {
+		if(move.getCell().getRow()>=board.getDimensions() || move.getCell().getCol()>=board.getDimensions()
+				|| move.getCell().getRow()<0 || move.getCell().getCol()<0
+				) {
+			return false;
+		}
+		if(board.getGrid().get(move.getCell().getRow()).get(move.getCell().getCol()).getCellState()
+				==CellState.FILLED) {
+			return false;
+		}
 		
+		return true;
 	}
 
 	boolean checkWinner(Move move){
