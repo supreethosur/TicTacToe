@@ -38,5 +38,4 @@ public class ColumnwinningStratergy implements WinningStratergy{
 		}
 		return false;
 	}
-
 }

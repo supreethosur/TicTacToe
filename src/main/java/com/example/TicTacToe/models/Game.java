@@ -85,20 +85,7 @@ public class Game {
 			board.display();
 	}
 
-//	public Move makeMove() {
-//		Player currentPlayer = players.get(nextPlayerIndex);
-//		Move move = currentPlayer.makeMove(board);
-//		
-//		
-//		moves.add(move);
-//		
-//		if(checkWinner(move)) {
-//			this.winner = currentPlayer;
-//			this.gameState = GameState.GAME_WON;
-//		}
-//		nextPlayerIndex=(nextPlayerIndex+1)%players.size();
-//		return move;
-//	}
+
 	
 	public void makeMove(){
         //make a move

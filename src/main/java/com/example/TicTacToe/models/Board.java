@@ -1,14 +1,30 @@
 package com.example.TicTacToe.models;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Data;
 
-@Data
+
+
 public class Board {
+	public int getDimensions() {
+		return dimensions;
+	}
 
-	
+	public void setDimensions(int dimensions) {
+		this.dimensions = dimensions;
+	}
+
+	public List<List<Cell>> getGrid() {
+		return grid;
+	}
+
+	public void setGrid(List<List<Cell>> grid) {
+		this.grid = grid;
+	}
+
 	private int dimensions;
 	private List<List<Cell>> grid;
 	
